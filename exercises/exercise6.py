@@ -13,6 +13,15 @@ def numeros_al_final_basico(lista: List[Union[float, str]]) -> List[Union[float,
         - No utilizar índices.
     """
 
+    enteros=[]
+    strings=[]
+    for i in lista:
+        if type(i) == int:
+            enteros.append(i)
+        if type(i) == str:
+            strings.append(i)
+    
+    return strings + enteros
 
 # NO MODIFICAR - INICIO
 assert numeros_al_final_basico([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 1, 10]  # noqa: E501
@@ -29,7 +38,11 @@ def numeros_al_final_comprension(lista: List[Union[float, str]]) -> List[Union[f
         - No utilizar bucles.
         - Utilizar dos comprensiones de listas.
     """
-
+    enteros=[]
+    strings=[]
+    enteros=[i for i in lista if type(i) == int]
+    strings=[i for i in lista if type(i) == str]
+    return strings + enteros
 
 # NO MODIFICAR - INICIO
 assert numeros_al_final_comprension([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 1, 10]  # noqa: E501
