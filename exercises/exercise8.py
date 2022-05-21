@@ -6,11 +6,11 @@ base de datos y se quieren combinar estas listas para que luego puedan crearse
 los objetos de la capa de negocio.
 """
 
-
 from typing import Any, List, Tuple
 
 nombre_articulos = ["ventana", "lámpara", "shampoo"]
 precio_articulos = [100.48, 16.42, 5.20]
+
 
 
 def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
@@ -23,12 +23,10 @@ def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
         - Utilizar índices.
     """
     result=[]
-    dupla=[]
     for i in range(len(nombres)):
+        dupla = []
         dupla.extend([nombres[i],precios[i]])
-        tupl = tuple(dupla)
-        result.append(tupl)
-        dupla.clear()
+        result.append(tuple(dupla))
     return tuple(result)
 
 # NO MODIFICAR - INICIO
@@ -45,6 +43,7 @@ assert combinar_basico(nombre_articulos, precio_articulos) == respuesta
 ###############################################################################
 
 
+
 id_articulos = [6852, 1459, 3578]
 
 
@@ -58,7 +57,14 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
 
     Referencia: https://docs.python.org/3/library/functions.html#enumerate
     """
-
+    result=[]
+    for indice, names in enumerate(nombres):
+        element = []
+        price = precios[indice]
+        id = ids[indice]
+        element.extend([names ,price, id])
+        result.append(tuple(element))
+    return tuple(result)
 
 # NO MODIFICAR - INICIO
 respuesta = (
@@ -74,6 +80,7 @@ assert combinar_enumerate(nombre_articulos, precio_articulos, id_articulos) == r
 ###############################################################################
 
 
+
 id_articulos = [6852, 1459, 3578]
 
 
@@ -87,6 +94,12 @@ def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tu
         - No utilizar índices.
     Referencia: https://docs.python.org/3/library/functions.html#zip
     """
+    result = []
+    for names, price, id in zip(nombres, precios, ids):
+        element = []
+        element.extend([names, price, id])
+        result.append(tuple(element)) 
+    return tuple(result)
 
 
 # NO MODIFICAR - INICIO
@@ -119,7 +132,13 @@ def combinar_zip_args(*args) -> Tuple[Any]:
 
     Referencia: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists  # noqa: E501
     """
-
+    
+    result = []
+    for names, price, id, cat, importado in zip(*args):
+        element = []
+        element.extend([names, price, id, cat, importado])
+        result.append(tuple(element)) 
+    return tuple(result)
 
 # NO MODIFICAR - INICIO
 respuesta = (
