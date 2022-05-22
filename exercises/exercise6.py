@@ -38,8 +38,7 @@ def numeros_al_final_comprension(lista: List[Union[float, str]]) -> List[Union[f
         - No utilizar bucles.
         - Utilizar dos comprensiones de listas.
     """
-    enteros=[]
-    strings=[]
+    
     enteros=[i for i in lista if type(i) == int]
     strings=[i for i in lista if type(i) == str]
     return strings + enteros

@@ -1,14 +1,30 @@
-from typing import Iterable
-def suma_cubo_pares_sum_list(numeros: Iterable[int]) -> int:
-    """Re-Escribir utilizando comprension de listas (debe resolverse en 1
-    línea) y la función built-in sum.
+from typing import List, Union
 
-    Referencias:
-        - https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions # noqa: E501
-        - https://docs.python.org/3/library/functions.html#sum
+###############################################################################
+
+
+def maximo_recursivo(*args) -> float:
+    """Toma una cantidad arbitraria de números y devuelve el mayor.
+
+    Restricciónes:
+        - No utilizar la función max
+        - No utilizar la ninguna otra función salvo maximo_recursivo
+        - Resolver de manera recursiva
     """
-    return sum([x for x in [j**3 for j in numeros] if x%2 == 0 ])
+    lista = []
+    lista.extend([*args])
+    max = lista[0]
+    for i in range(len(lista)):
+        if lista[i] > max:
+           max = lista[i]
+    return max
+
+
 
 # NO MODIFICAR - INICIO
-assert suma_cubo_pares_sum_list([1, 2, 3, 4, 5, 6]) == 288
+if __name__ == "__main__":
+    assert maximo_recursivo(1, 10, 5, -5) == 10
+    assert maximo_recursivo(4, 9, 18, 6) == 18
+    assert maximo_recursivo(24, 9, 18, 20) == 24
+    assert maximo_recursivo(24, 9, 18, 30) == 30
 # NO MODIFICAR - FIN
